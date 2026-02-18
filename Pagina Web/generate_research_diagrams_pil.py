@@ -145,13 +145,13 @@ print("Imagen 1 generada: research-process-diagram.png")
 # ============================================
 # Crear imagen 2: Ciclo de Investigacion
 # ============================================
-img2 = Image.new('RGB', (1800, 1800), color='white')
+img2 = Image.new('RGB', (1800, 1900), color='white')
 draw2 = ImageDraw.Draw(img2, 'RGBA')
 
 # Titulo
-draw2.text((900, 80), "Ciclo de Investigacion Cientifica",
+draw2.text((900, 50), "Ciclo de Investigacion Cientifica",
            font=title_font, fill=primary_green, anchor="mm")
-draw2.text((900, 170), "Proceso Riguroso y Sistematico",
+draw2.text((900, 130), "Proceso Riguroso y Sistematico",
            font=subtitle_font, fill=secondary_green, anchor="mm")
 
 # Datos del ciclo
@@ -165,7 +165,7 @@ cycle_steps = [
 ]
 
 # Posiciones en circulo
-center_x, center_y = 900, 950
+center_x, center_y = 900, 1000
 radius = 420
 
 # Colores alternos para pasos
@@ -196,7 +196,11 @@ for i, title in enumerate(cycle_steps):
                font=step_title_font, fill='white', anchor="mm")
     
     # Etiqueta FUERA del circulo, posicionada según el ángulo
-    text_distance = circle_r + 90
+    # Para el paso 1, aumentar distancia hacía arriba
+    if i == 0:  # Paso 1 - mover más hacia arriba
+        text_distance = circle_r + 120
+    else:
+        text_distance = circle_r + 90
     text_x = x + text_distance * math.cos(rads)
     text_y = y + text_distance * math.sin(rads)
     draw2.text((text_x, text_y), title,
@@ -230,7 +234,7 @@ draw2.text((center_x, center_y + 30), "Rigurosa",
            font=step_title_font, fill=primary_green, anchor="mm")
 
 # Info box
-info_y = 1550
+info_y = 1650
 draw2.rectangle([(80, info_y), (1720, info_y + 200)],
                 outline=secondary_green, width=3, fill=(245, 250, 248))
 info_text2 = "Este ciclo se repite iterativamente hasta alcanzar conclusiones robustas y publicables"

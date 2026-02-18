@@ -2,7 +2,7 @@
 
 ## Bienvenido al Semillero Mamba
 
-Este repositorio contiene el material de apoyo y recursos para el Semillero Mamba - Tecnólogo ADSO SENA.
+Este repositorio contiene el material de apoyo y recursos para el Semillero Mamba - Programa de Ingeniería de Sistemas, Corporación Universitaria Minuto de Dios - CORHUILA.
 
 ## Contenido
 
@@ -10,4 +10,8 @@ Este repositorio contiene el material de apoyo y recursos para el Semillero Mamb
 
 ## Descripción
 
-El Semillero Mamba es un espacio de formación especializado en análisis y desarrollo de sistemas de información, con enfoque en innovación, investigación y excelencia técnica.
+El Semillero Mamba es un espacio de formación especializado en Ingeniería de Sistemas, con enfoque en investigación, innovación, desarrollo de software y excelencia técnica. Forma parte de las iniciativas de investigación formativa de CORHUILA.
+
+## Sobre CORHUILA
+
+Corporación Universitaria Minuto de Dios - CORHUILA es una institución de educación superior comprometida con la formación integral de profesionales en diversas áreas del conocimiento.

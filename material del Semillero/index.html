@@ -44,29 +44,15 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            flex-wrap: wrap;
             gap: 20px;
-            position: relative;
-        }
-
-        .header-content::after {
-            content: '';
-            position: absolute;
-            left: 50%;
-            top: 50%;
-            transform: translate(-50%, -50%);
-            width: 400px;
-            height: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: -1;
+            min-height: 100px;
         }
 
         .logo-section {
             display: flex;
             align-items: center;
             gap: 15px;
+            flex-shrink: 0;
         }
 
         .logo-item {
@@ -84,29 +70,27 @@
             opacity: 0.9;
         }
 
+        .header-title {
+            flex: 1;
+            text-align: center;
+        }
+
         .header-title h1 {
             font-size: 1.8em;
             margin-bottom: 5px;
             text-align: center;
-            width: 100%;
         }
 
         .header-title p {
             font-size: 0.95em;
             opacity: 0.95;
             text-align: center;
-            width: 100%;
-        }
-
-        .header-title {
-            flex: 1 1 100%;
-            order: -1;
-            text-align: center;
         }
 
         nav {
             display: flex;
             gap: 30px;
+            flex-shrink: 0;
         }
 
         nav a {
@@ -558,11 +542,6 @@
             <div class="logo-section">
                 <div class="logo-item">
                     <img src="../Logo/Logo.png" alt="Logo Mamba" style="height: 60px; width: auto;">
-                    <p>Semillero Mamba</p>
-                </img>
-                <div class="logo-item">
-                    <div style="font-size: 2em; color: white;">🏫</div>
-                    <p>CORHUILA</p>
                 </div>
             </div>
             <div class="header-title">

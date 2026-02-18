@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Aprende cómo construir un thesaurus estructurado sobre investigación. Guía completa del Semillero Mamba CORHUILA.">
+    <meta name="keywords" content="thesaurus, investigación, metodología, términos, vocabulario controlado">
+    <title>Construcción del Thesaurus sobre Investigación - Semillero Mamba</title>
+    <link rel="icon" href="../Logo/Logo.png" type="image/png">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        /* Colores CORHUILA */
+        :root {
+            --primary-green: #1a7c5e;
+            --secondary-green: #2a9d7e;
+            --accent-red: #d32f2f;
+            --light-bg: #f8f9fa;
+            --dark-text: #2c3e50;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary-green) 0%, var(--secondary-green) 100%);
+            color: white;
+            padding: 20px 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-content {
+            max-width: 100%;
+            margin: 0 auto;
+            padding: 20px 40px;
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            grid-template-areas: "logo title nav";
+            align-items: center;
+            gap: 20px;
+            min-height: 100%;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            gap: 15px;
+            grid-area: logo;
+        }
+
+        .logo-item img {
+            height: 60px;
+            width: auto;
+        }
+
+        .header-title {
+            text-align: center;
+            grid-area: title;
+            justify-self: center;
+        }
+
+        .header-title h1 {
+            font-size: 1.8em;
+            margin-bottom: 5px;
+            text-align: center;
+        }
+
+        .header-title p {
+            font-size: 0.95em;
+            opacity: 0.95;
+        }
+
+        nav {
+            display: flex;
+            gap: 20px;
+            flex-shrink: 0;
+            flex-wrap: wrap;
+            justify-content: flex-end;
+            grid-area: nav;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            transition: opacity 0.3s;
+            font-weight: 500;
+        }
+
+        nav a:hover {
+            opacity: 0.8;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .breadcrumb {
+            margin: 20px 0;
+            padding: 15px 0;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .breadcrumb a {
+            color: var(--secondary-green);
+            text-decoration: none;
+            transition: opacity 0.3s;
+        }
+
+        .breadcrumb a:hover {
+            opacity: 0.8;
+            text-decoration: underline;
+        }
+
+        .blog-header-section {
+            background: linear-gradient(135deg, var(--light-bg) 0%, white 100%);
+            padding: 60px 20px;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .blog-title {
+            font-size: 2.5em;
+            color: var(--primary-green);
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .blog-meta {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            color: #666;
+            font-size: 0.95em;
+            margin-bottom: 20px;
+        }
+
+        .blog-meta span {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .blog-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .blog-content h2 {
+            color: var(--primary-green);
+            font-size: 1.8em;
+            margin: 30px 0 15px;
+            font-weight: 700;
+        }
+
+        .blog-content h3 {
+            color: var(--secondary-green);
+            font-size: 1.3em;
+            margin: 25px 0 12px;
+            font-weight: 600;
+        }
+
+        .blog-content p {
+            margin-bottom: 15px;
+            line-height: 1.8;
+            color: #555;
+            text-align: justify;
+        }
+
+        .blog-image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            margin: 30px 0;
+            border: 2px solid var(--light-bg);
+        }
+
+        .image-caption {
+            text-align: center;
+            font-size: 0.9em;
+            color: #999;
+            margin-top: -20px;
+            margin-bottom: 30px;
+            font-style: italic;
+        }
+
+        .image-modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            animation: fadeIn 0.3s;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .modal-content {
+            margin: auto;
+            display: block;
+            max-width: 90vw;
+            max-height: 90vh;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            position: relative;
+            animation: slideIn 0.3s;
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translate(-50%, -60%);
+                opacity: 0;
+            }
+            to {
+                transform: translate(-50%, -50%);
+                opacity: 1;
+            }
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 40px;
+            color: white;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: opacity 0.3s;
+        }
+
+        .modal-close:hover {
+            opacity: 0.7;
+        }
+
+        .zoom-hint {
+            display: inline-block;
+            margin-left: 8px;
+            padding: 2px 8px;
+            background: var(--secondary-green);
+            color: white;
+            border-radius: 15px;
+            font-size: 0.75em;
+            font-weight: 600;
+        }
+
+        .blog-image {
+            cursor: zoom-in;
+        }
+
+        .blog-image:hover {
+            opacity: 0.95;
+            box-shadow: 0 6px 20px rgba(42, 157, 126, 0.3);
+        }
+
+        .blog-content ul, .blog-content ol {
+            margin: 20px 0 20px 30px;
+            line-height: 1.8;
+        }
+
+        .blog-content li {
+            margin-bottom: 8px;
+            color: #555;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, rgba(26, 124, 94, 0.05) 0%, rgba(42, 157, 126, 0.05) 100%);
+            border-left: 4px solid var(--secondary-green);
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 5px;
+        }
+
+        .highlight-box p {
+            color: var(--primary-green);
+            font-weight: 600;
+            margin: 0;
+        }
+
+        .code-block {
+            background: #f5f5f5;
+            border-left: 4px solid var(--accent-red);
+            padding: 15px;
+            margin: 20px 0;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+            overflow-x: auto;
+            border-radius: 5px;
+        }
+
+        footer {
+            background: var(--primary-green);
+            color: white;
+            text-align: center;
+            padding: 30px 20px;
+            margin-top: 60px;
+        }
+
+        footer a {
+            color: var(--secondary-green);
+            text-decoration: none;
+            transition: opacity 0.3s;
+        }
+
+        footer a:hover {
+            opacity: 0.8;
+        }
+
+        @media (max-width: 768px) {
+            .header-content {
+                grid-template-columns: 1fr;
+                grid-template-areas: "logo" "title" "nav";
+                gap: 10px;
+            }
+
+            .logo-section {
+                justify-content: center;
+            }
+
+            nav {
+                justify-content: center;
+                gap: 10px;
+            }
+
+            .blog-title {
+                font-size: 1.8em;
+            }
+
+            .blog-meta {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-content">
+            <div class="logo-section">
+                <div class="logo-item">
+                    <img src="../Logo/Logo.png" alt="CORHUILA Logo">
+                </div>
+            </div>
+            <div class="header-title">
+                <h1>Semillero Mamba</h1>
+                <p>Investigación y Excelencia Académica</p>
+            </div>
+            <nav>
+                <a href="index.html">Inicio</a>
+                <a href="#contact">Contacto</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Breadcrumb -->
+    <div class="container">
+        <div class="breadcrumb">
+            <a href="index.html">Inicio</a> / Construcción del Thesaurus sobre Investigación
+        </div>
+    </div>
+
+    <!-- Blog Header -->
+    <div class="blog-header-section">
+        <div class="container">
+            <h1 class="blog-title">Construcción del Thesaurus sobre Investigación</h1>
+            <div class="blog-meta">
+                <span>📅 Febrero 18, 2026</span>
+                <span>✍️ Estudiantes de Investigación</span>
+                <span>⏱️ 12 minutos de lectura</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contenido Principal -->
+    <div class="container">
+        <article class="blog-content">
+            <h2>¿Qué es un Thesaurus en la Investigación?</h2>
+            <p>
+                Un thesaurus es mucho más que un diccionario de sinónimos. En el contexto académico y de investigación, es un vocabulario controlado que organiza conceptos relacionados con un tema específico de manera jerárquica y relacional. Permite a los investigadores comunicarse con precisión, normalizar la terminología y facilitar la recuperación de información en bases de datos especializadas.
+            </p>
+
+            <h2>¿Por Qué Construir un Thesaurus sobre Investigación?</h2>
+            <p>
+                En el Semillero Mamba, nuestros estudiantes trabajan con diversos métodos de investigación: BPM (Business Process Management), análisis de datos, desarrollo ágil, arquitectura de software, y más. Crear un thesaurus unificado nos permite:
+            </p>
+            <ul>
+                <li><strong>Estandarizar terminología:</strong> Evita confusiones cuando diferentes estudiantes usan términos distintos para el mismo concepto.</li>
+                <li><strong>Mejorar la documentación:</strong> Facilita que otros investigadores encuentren y comprendan nuestros trabajos.</li>
+                <li><strong>Crear conecciones:</strong> Identifica relaciones entre conceptos que podrían generar nuevas investigaciones.</li>
+                <li><strong>Formalizar el conocimiento:</strong> Transforma experiencias dispersas en un activo compartido y duradero.</li>
+            </ul>
+
+            <h2>Fases de Construcción del Thesaurus</h2>
+
+            <h3>Fase 1: Identificación de Conceptos Claves</h3>
+            <p>
+                El primer paso es recopilar todos los términos relevantes en nuestro trabajo de investigación. Nuestro equipo ha identificado categorías principales:
+            </p>
+            <div class="highlight-box">
+                <p>
+                    Categorías identificadas: Metodologías, Procesos, Herramientas, Actores, Resultados, Impacto Social
+                </p>
+            </div>
+            <ul>
+                <li><strong>Metodologías:</strong> BPM, Análisis de Datos, Desarrollo Ágil, Arquitectura de Software, Investigación Cualitativa, Investigación Cuantitativa</li>
+                <li><strong>Procesos:</strong> Identificación de Problemas, Investigación Bibliográfica, Diseño de Soluciones, Implementación, Validación</li>
+                <li><strong>Herramientas:</strong> Python, SQL, Git, Docker, Jupyter Notebooks, Figma</li>
+                <li><strong>Actores:</strong> Investigador, Coordinador, Estudiante, Comunidad Beneficiada</li>
+                <li><strong>Resultados:</strong> Publicación, Presentación, Prototipo, Informe Científico</li>
+                <li><strong>Impacto:</strong> Transferencia Tecnológica, Educación, Mejora de Procesos</li>
+            </ul>
+
+            <h3>Fase 2: Definición de Relaciones</h3>
+            <p>
+                Una vez identificados los conceptos, establecemos relaciones entre ellos. En un thesaurus, las relaciones principales son:
+            </p>
+            <ul>
+                <li><strong>Relaciones Jerárquicas (BT/NT):</strong> 
+                    <ul style="margin-top: 10px; margin-left: 20px;">
+                        <li>Desarrollo Ágil (Concepto más amplio) → Scrum, Kanban (Conceptos más específicos)</li>
+                        <li>BPM (Concepto más amplio) → Modelado de Procesos, Optimización de Procesos</li>
+                    </ul>
+                </li>
+                <li><strong>Relaciones Asociativas (RT):</strong> Vinculan conceptos que están relacionados pero no son jerárquicos.
+                    <ul style="margin-top: 10px; margin-left: 20px;">
+                        <li>Análisis de Datos ↔ Visualización de Datos</li>
+                        <li>Python ↔ Jupyter Notebooks</li>
+                    </ul>
+                </li>
+                <li><strong>Términos Preferidos y Alternos:</strong> Elegimos una forma estándar para cada concepto.
+                    <ul style="margin-top: 10px; margin-left: 20px;">
+                        <li>Preferido: "Investigación Científica" | Alterno: "Investigación Rigurosa"</li>
+                        <li>Preferido: "Base de Datos" | Alterno: "BD", "Database"</li>
+                    </ul>
+                </li>
+            </ul>
+
+            <h3>Fase 3: Creación de Descripciones y Alcance</h3>
+            <p>
+                Para cada concepto principal, creamos una nota de alcance que explica exactamente qué significa en nuestro contexto:
+            </p>
+            <div class="code-block">
+Término Preferido: INVESTIGACIÓN CIENTÍFICA
+Nota de Alcance: Proceso riguroso y sistemático de 
+indagación que sigue métodos establecidos para 
+responder preguntas, resolver problemas o crear 
+conocimiento nuevo. En el Semillero Mamba, incluye 
+investigación cualitativa, cuantitativa y mixta.
+Términos Relacionados: Metodología, Rigor Científico
+Términos Jerárquicos: Investigación Cualitativa, 
+Investigación Cuantitativa
+            </div>
+
+            <h3>Fase 4: Validación y Refinamiento</h3>
+            <p>
+                Presentamos el thesaurus preliminar a coordinadores y estudiantes líderes para obtener retroalimentación. Aspectos a validar:
+            </p>
+            <ul>
+                <li>¿Los términos reflejan realmente nuestro trabajo?</li>
+                <li>¿Faltan conceptos importantes?</li>
+                <li>¿Las relaciones jerárquicas son correctas?</li>
+                <li>¿Las definiciones son claras y útiles?</li>
+            </ul>
+
+            <h2>Beneficios Observados</h2>
+            <div class="highlight-box">
+                <p>
+                    ✨ Mejora en la Comunicación: Los estudiantes usan una terminología consistente en documentos y presentaciones.
+                </p>
+            </div>
+            <div class="highlight-box">
+                <p>
+                    📚 Facilita la Búsqueda: Es más fácil encontrar trabajos anteriores relacionados con nuestros nuevos proyectos.
+                </p>
+            </div>
+            <div class="highlight-box">
+                <p>
+                    🔗 Crea Sinergias: Identificamos conexiones entre proyectos que comparten conceptos fundamentales.
+                </p>
+            </div>
+            <div class="highlight-box">
+                <p>
+                    📖 Preserva el Conocimiento: El thesaurus se convierte en un recurso duradero que nuevas generaciones pueden usar.
+                </p>
+            </div>
+
+            <h2>Herramientas para Crear y Mantener un Thesaurus</h2>
+            <ul>
+                <li><strong>Herramientas Especializadas:</strong> TemaTres, Skos Editor, VocBench</li>
+                <li><strong>Opciones Simples:</strong> Hojas de cálculo estructuradas, Documentos colaborativos (Google Docs, Notion)</li>
+                <li><strong>Estándares Internacionales:</strong> SKOS (Simple Knowledge Organization System), ISO 25964-1</li>
+            </ul>
+
+            <h2>Próximos Pasos en el Semillero Mamba</h2>
+            <p>
+                Estamos en proceso de:
+            </p>
+            <ol>
+                <li>Completar el thesaurus inicial con 150+ términos definidos</li>
+                <li>Implementarlo en nuestro repositorio institucional</li>
+                <li>Capacitar a todos los estudiantes en su uso</li>
+                <li>Revisar y actualizar anualmente según emergen nuevos conceptos</li>
+            </ol>
+
+            <h2>Conclusión</h2>
+            <p>
+                Construir un thesaurus sobre investigación no es solo una tarea administrativativa, es una inversión en la calidad de nuestro trabajo académico. Al normalizar nuestro vocabulario, mejoramos la comunicación, facilitamos la transferencia de conocimiento entre generaciones y aseguramos que el Semillero Mamba continúe evolucionando como un ecosistema investigativo sólido y profesional.
+            </p>
+            <p>
+                ¿Estás listo para ser parte de esta construcción? Tus ideas y términos favoritos son valiosos para enriquecer nuestro thesaurus.
+            </p>
+
+            <div style="margin-top: 40px; padding-top: 20px; border-top: 2px solid #ddd;">
+                <p style="font-size: 0.9em; color: #999;">
+                    <strong>Sobre este artículo:</strong> Esta guía fue desarrollada por estudiantes del Semillero Mamba como parte de nuestro 
+                    compromiso con la excelencia académica y la formalización del conocimiento científico.
+                </p>
+            </div>
+        </article>
+    </div>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="container">
+            <h3 style="margin-bottom: 20px;">Semillero de Investigación Mamba</h3>
+            <p>Corporación Universitaria CORHUILA</p>
+            <p style="margin: 10px 0;">
+                📧 <a href="mailto:mamba@corhuila.edu.co">mamba@corhuila.edu.co</a> | 
+                📍 Neiva, Huila - Colombia
+            </p>
+            <p style="font-size: 0.9em; margin-top: 20px;">
+                © 2026 Semillero Mamba. Todos los derechos reservados.
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Modal de Zoom para Imágenes
+        const modal = document.createElement('div');
+        modal.className = 'image-modal';
+        modal.id = 'imageModal';
+        document.body.appendChild(modal);
+
+        const images = document.querySelectorAll('.blog-image');
+        
+        images.forEach(img => {
+            img.style.cursor = 'zoom-in';
+            img.addEventListener('click', function() {
+                openImageModal(this.src);
+            });
+        });
+
+        function openImageModal(imgSrc) {
+            const modal = document.getElementById('imageModal');
+            const modalImg = document.createElement('img');
+            const closeBtn = document.createElement('span');
+            
+            modal.innerHTML = '';
+            
+            modalImg.src = imgSrc;
+            modalImg.className = 'modal-content';
+            
+            closeBtn.className = 'modal-close';
+            closeBtn.innerHTML = '&times;';
+            closeBtn.onclick = closeImageModal;
+            
+            modal.appendChild(closeBtn);
+            modal.appendChild(modalImg);
+            modal.style.display = 'block';
+            
+            modal.onclick = function(event) {
+                if (event.target === modal) {
+                    closeImageModal();
+                }
+            }
+            
+            document.addEventListener('keydown', function(event) {
+                if (event.key === 'Escape') {
+                    closeImageModal();
+                }
+            });
+        }
+
+        function closeImageModal() {
+            const modal = document.getElementById('imageModal');
+            modal.style.display = 'none';
+        }
+    </script>
+</body>
+</html>

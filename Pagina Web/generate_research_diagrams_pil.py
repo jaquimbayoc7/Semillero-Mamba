@@ -145,7 +145,7 @@ print("Imagen 1 generada: research-process-diagram.png")
 # ============================================
 # Crear imagen 2: Ciclo de Investigacion
 # ============================================
-img2 = Image.new('RGB', (1800, 1700), color='white')
+img2 = Image.new('RGB', (1800, 1800), color='white')
 draw2 = ImageDraw.Draw(img2, 'RGBA')
 
 # Titulo
@@ -165,7 +165,7 @@ cycle_steps = [
 ]
 
 # Posiciones en circulo
-center_x, center_y = 900, 900
+center_x, center_y = 900, 950
 radius = 420
 
 # Colores alternos para pasos
@@ -230,7 +230,7 @@ draw2.text((center_x, center_y + 30), "Rigurosa",
            font=step_title_font, fill=primary_green, anchor="mm")
 
 # Info box
-info_y = 1450
+info_y = 1550
 draw2.rectangle([(80, info_y), (1720, info_y + 200)],
                 outline=secondary_green, width=3, fill=(245, 250, 248))
 info_text2 = "Este ciclo se repite iterativamente hasta alcanzar conclusiones robustas y publicables"

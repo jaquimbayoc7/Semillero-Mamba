@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Descubre las experiencias y aprendizajes iniciales de nuestros estudiantes al involucrarse en el mundo de la investigación académica. Blog del Semillero Mamba CORHUILA.">
+    <meta name="keywords" content="investigación, semillero, academia, experiencias, estudiantes">
+    <title>Cómo comenzamos en la investigación - Semillero Mamba</title>
+    <link rel="icon" href="../Logo/Logo.png" type="image/png">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        /* Colores CORHUILA */
+        :root {
+            --primary-green: #1a7c5e;
+            --secondary-green: #2a9d7e;
+            --accent-red: #d32f2f;
+            --light-bg: #f8f9fa;
+            --dark-text: #2c3e50;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary-green) 0%, var(--secondary-green) 100%);
+            color: white;
+            padding: 20px 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-content {
+            max-width: 100%;
+            margin: 0 auto;
+            padding: 20px 40px;
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            grid-template-areas: "logo title nav";
+            align-items: center;
+            gap: 20px;
+            min-height: 100%;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            gap: 15px;
+            grid-area: logo;
+        }
+
+        .logo-item img {
+            height: 60px;
+            width: auto;
+        }
+
+        .header-title {
+            text-align: center;
+            grid-area: title;
+            justify-self: center;
+        }
+
+        .header-title h1 {
+            font-size: 1.8em;
+            margin-bottom: 5px;
+            text-align: center;
+        }
+
+        .header-title p {
+            font-size: 0.95em;
+            opacity: 0.95;
+        }
+
+        nav {
+            display: flex;
+            gap: 20px;
+            flex-shrink: 0;
+            flex-wrap: wrap;
+            justify-content: flex-end;
+            grid-area: nav;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            transition: opacity 0.3s;
+            font-weight: 500;
+        }
+
+        nav a:hover {
+            opacity: 0.8;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .breadcrumb {
+            margin: 20px 0;
+            padding: 15px 0;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .breadcrumb a {
+            color: var(--secondary-green);
+            text-decoration: none;
+            transition: opacity 0.3s;
+        }
+
+        .breadcrumb a:hover {
+            opacity: 0.8;
+            text-decoration: underline;
+        }
+
+        .blog-header-section {
+            background: linear-gradient(135deg, var(--light-bg) 0%, white 100%);
+            padding: 60px 20px;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .blog-title {
+            font-size: 2.5em;
+            color: var(--primary-green);
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .blog-meta {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            color: #666;
+            font-size: 0.95em;
+            margin-bottom: 20px;
+        }
+
+        .blog-meta span {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .blog-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .blog-content h2 {
+            color: var(--primary-green);
+            font-size: 1.8em;
+            margin: 30px 0 15px;
+            font-weight: 700;
+        }
+
+        .blog-content h3 {
+            color: var(--secondary-green);
+            font-size: 1.3em;
+            margin: 25px 0 12px;
+            font-weight: 600;
+        }
+
+        .blog-content p {
+            margin-bottom: 15px;
+            line-height: 1.8;
+            color: #555;
+            text-align: justify;
+        }
+
+        .blog-content ul, .blog-content ol {
+            margin: 20px 0 20px 30px;
+            line-height: 1.8;
+        }
+
+        .blog-content li {
+            margin-bottom: 8px;
+            color: #555;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, rgba(26, 124, 94, 0.05) 0%, rgba(42, 157, 126, 0.05) 100%);
+            border-left: 4px solid var(--secondary-green);
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 5px;
+        }
+
+        .highlight-box p {
+            color: var(--primary-green);
+            font-weight: 600;
+            font-style: italic;
+        }
+
+        .student-testimony {
+            background: white;
+            border: 2px solid var(--secondary-green);
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 8px;
+            border-left: 5px solid var(--accent-red);
+        }
+
+        .student-testimony p:first-child {
+            color: var(--primary-green);
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .student-testimony p:last-child {
+            color: #999;
+            font-size: 0.9em;
+            margin-top: 10px;
+            font-style: italic;
+        }
+
+        .back-button {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--primary-green) 0%, var(--secondary-green) 100%);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: transform 0.3s, box-shadow 0.3s;
+            margin-top: 30px;
+            font-weight: 600;
+        }
+
+        .back-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(26, 124, 94, 0.3);
+        }
+
+        .related-posts {
+            max-width: 800px;
+            margin: 60px auto 40px;
+            padding: 40px 20px;
+            background: var(--light-bg);
+            border-radius: 10px;
+        }
+
+        .related-posts h3 {
+            color: var(--primary-green);
+            font-size: 1.5em;
+            margin-bottom: 20px;
+            text-align: center;
+            font-weight: 700;
+        }
+
+        .related-post-card {
+            background: white;
+            padding: 15px;
+            margin: 10px 0;
+            border-left: 4px solid var(--secondary-green);
+            border-radius: 5px;
+            text-decoration: none;
+            color: inherit;
+            transition: transform 0.3s;
+            display: block;
+        }
+
+        .related-post-card:hover {
+            transform: translateX(5px);
+        }
+
+        .related-post-card strong {
+            color: var(--primary-green);
+        }
+
+        footer {
+            background: var(--dark-text);
+            color: white;
+            text-align: center;
+            padding: 30px 20px;
+            margin-top: 60px;
+        }
+
+        footer p {
+            margin: 8px 0;
+            font-size: 0.95em;
+        }
+
+        .footer-links {
+            margin-top: 15px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: var(--secondary-green);
+            text-decoration: none;
+            transition: opacity 0.3s;
+        }
+
+        .footer-links a:hover {
+            opacity: 0.8;
+        }
+
+        /* WhatsApp Button */
+        .whatsapp-button {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #25d366 0%, #1fab89 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+            transition: transform 0.3s, box-shadow 0.3s;
+            z-index: 999;
+            text-decoration: none;
+        }
+
+        .whatsapp-button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 30px rgba(37, 211, 102, 0.6);
+        }
+
+        @media (max-width: 768px) {
+            .header-content {
+                grid-template-columns: 1fr;
+                grid-template-areas: "logo" "title" "nav";
+            }
+
+            .blog-title {
+                font-size: 1.8em;
+            }
+
+            .blog-meta {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .blog-content {
+                padding: 20px;
+            }
+
+            .whatsapp-button {
+                width: 55px;
+                height: 55px;
+                bottom: 20px;
+                right: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-content">
+            <div class="logo-section">
+                <div class="logo-item">
+                    <img src="../Logo/Logo.png" alt="Logo Mamba" style="height: 60px; width: auto;">
+                </div>
+            </div>
+            <div class="header-title">
+                <h1>Semillero Mamba</h1>
+                <p>Investigación en Ingeniería de Sistemas</p>
+            </div>
+            <nav>
+                <a href="index.html">Inicio</a>
+                <a href="index.html#lineas">Líneas</a>
+                <a href="index.html#coordinadores">Equipo</a>
+                <a href="index.html#eventos">Eventos</a>
+                <a href="index.html#blog">Blog</a>
+                <a href="https://chat.whatsapp.com/LC9bMjYmFqN4LUfGLDOMX0" target="_blank">WhatsApp</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Breadcrumb -->
+    <div class="container breadcrumb">
+        <a href="index.html">← Volver al sitio principal</a>
+    </div>
+
+    <!-- Blog Header -->
+    <div class="blog-header-section">
+        <div class="container">
+            <h2 class="blog-title">Cómo comenzamos en la investigación</h2>
+            <div class="blog-meta">
+                <span>📅 Comunidad Semillero Mamba</span>
+                <span>⏱️ 8 minutos de lectura</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Blog Content -->
+    <div class="container">
+        <article class="blog-content">
+            <h2>Descubriendo el Mundo de la Investigación Académica</h2>
+            
+            <p>
+                Cuando nuestros estudiantes ingresan al Semillero Mamba, muchos llegan con una pregunta común: 
+                "¿Por qué la investigación?" Este blog post nace de esas conversaciones iniciales, de los primeros 
+                pasos titubeantes, y de la transformación que ocurre cuando descubres que eres capaz de generar 
+                conocimiento nuevo.
+            </p>
+
+            <h3>Los Primeros Pasos: Dudas y Entusiasmo</h3>
+            
+            <p>
+                La investigación académica puede parecer un camino imposible cuando recién comienzas. Nadie te enseña 
+                exactamente cómo comenzar, y los libros de metodología parecen escritos en otro idioma. Nuestros 
+                estudiantes iniciales sintieron exactamente lo mismo. Sin embargo, descubrieron que con el apoyo 
+                adecuado, la mentoría de profesores experimentados y el trabajo en equipo, el proceso se vuelve no solo 
+                comprensible, sino fascinante.
+            </p>
+
+            <div class="highlight-box">
+                <p>
+                    "El primer día pensé que no sería capaz, pero después de escuchar los problemas reales que 
+                    necesitaban soluciones, vi que la investigación era algo tangible y alcanzable."
+                </p>
+            </div>
+
+            <h3>¿Qué es Realmente la Investigación?</h3>
+            
+            <p>
+                En el Semillero Mamba, descubrimos que la investigación no es solo leer papers o escribir reportes. 
+                Es un proceso vivo donde:
+            </p>
+
+            <ul>
+                <li><strong>Identificas problemas reales:</strong> En desarrollo de software, calidad de software, análisis de datos y arquitectura</li>
+                <li><strong>Propones soluciones:</strong> Basadas en métodos científicos y pruebas rigurosas</li>
+                <li><strong>Aprendes continuamente:</strong> De tus errores y de las contribuciones de tu equipo</li>
+                <li><strong>Generas impacto:</strong> Tus resultados pueden ayudar a empresas y otras instituciones académicas</li>
+                <li><strong>Creces profesionalmente:</strong> Adquiriendo habilidades que te diferencian en el mercado laboral</li>
+            </ul>
+
+            <h3>Nuestras Líneas de Investigación</h3>
+            
+            <p>
+                En el Semillero Mamba, trabajamos en cuatro líneas estratégicas que reflejan los desafíos actuales 
+                de la ingeniería de sistemas:
+            </p>
+
+            <div class="student-testimony">
+                <p>💻 Desarrollo de Software</p>
+                <p>
+                    Exploramos metodologías ágiles, patrones de diseño, y arquitecturas modernas que permiten crear 
+                    software de calidad de forma eficiente.
+                </p>
+            </div>
+
+            <div class="student-testimony">
+                <p>✅ Calidad de Software</p>
+                <p>
+                    Investigamos técnicas de testing, aseguramiento de calidad, y mejora continua de procesos para 
+                    garantizar que el software sea confiable y mantenible.
+                </p>
+            </div>
+
+            <div class="student-testimony">
+                <p>📈 Análisis de Datos</p>
+                <p>
+                    Aprendemos a extraer insights valiosos de grandes volúmenes de datos, utilizando herramientas 
+                    modernas y técnicas estadísticas avanzadas.
+                </p>
+            </div>
+
+            <div class="student-testimony">
+                <p>🏗️ Arquitectura de Software</p>
+                <p>
+                    Diseñamos sistemas escalables, mantenibles y resilientes, considerando patrones arquitectónicos 
+                    que resuelven problemas empresariales complejos.
+                </p>
+            </div>
+
+            <h3>La Metodología del Semillero</h3>
+            
+            <p>
+                Lo que hace especial al Semillero Mamba es nuestra metodología práctica:
+            </p>
+
+            <ol>
+                <li><strong>Mentoría personalizada:</strong> Trabajamos con profesores con experiencia en investigación y en la industria</li>
+                <li><strong>Proyectos reales:</strong> Abordamos problemas auténticos que requieren soluciones innovadoras</li>
+                <li><strong>Colaboración:</strong> Trabajamos en equipos multidisciplinarios donde aprendes a comunicar ideas complejas</li>
+                <li><strong>Publicación y difusión:</strong> Nuestros resultados se comparten en conferencias y revistas académicas</li>
+                <li><strong>Impacto empresarial:</strong> Buscamos transferir tecnología a las empresas de nuestra región</li>
+            </ol>
+
+            <h3>Testimonios de Nuestros Estudiantes</h3>
+            
+            <div class="student-testimony">
+                <p>👨‍🎓 Juan (Semestre 4)</p>
+                <p>
+                    "Cuando llegué, no sabía ni cómo leer un paper académico. Hoy estoy contribuyendo a un proyecto sobre 
+                    testing automatizado. La diferencia es la guía de mis coordinadores y el ambiente colaborativo."
+                </p>
+                <p style="margin-top: 20px;">Ingeniería de Sistemas</p>
+            </div>
+
+            <div class="student-testimony">
+                <p>👩‍🎓 María (Semestre 6)</p>
+                <p>
+                    "Lo que más me gusta del semillero es que no solo aprendes teoría. Trabajas en problemas que importan, 
+                    usas tecnología moderna, y construyes tu portafolio profesional desde temprano."
+                </p>
+                <p style="margin-top: 20px;">Ingeniería de Sistemas</p>
+            </div>
+
+            <h3>¿Cómo Puedo Comenzar?</h3>
+            
+            <p>
+                Si te sientes identificado con esta descripción, aquí es lo que tienes que hacer:
+            </p>
+
+            <div class="highlight-box">
+                <p>
+                    1. Accede al grupo de WhatsApp del Semillero Mamba<br>
+                    2. Contacta a nuestros coordinadores: Ing. Julián Quimbayo e Ing. José Miguel Llanos<br>
+                    3. Asiste a nuestras reuniones semanales (Miércoles, 5:00 PM - 5:40 PM)<br>
+                    4. ¡Comienza tu viaje de investigación!
+                </p>
+            </div>
+
+            <h3>Reflexión Final</h3>
+            
+            <p>
+                La investigación no es privilegio de pocos. Es una disciplina que cualquier estudiante comprometido 
+                puede aprender y dominar. En el Semillero Mamba, creemos que el verdadero aprendizaje ocurre cuando 
+                combinamos teoría, práctica, mentoría y la pasión por generar conocimiento nuevo.
+            </p>
+
+            <p>
+                Tu primer proyecto, tu primer paper, tu primer descubrimiento... todo comienza con un simple paso: 
+                decidir que eres más que un consumidor de conocimiento. Que eres un generador de conocimiento. 
+                Y eso, mis queridos estudiantes, puede cambiar todo.
+            </p>
+
+            <p style="margin-top: 40px; text-align: center; font-style: italic; color: var(--secondary-green);">
+                — Comunidad Semillero Mamba
+            </p>
+
+            <a href="index.html#blog" class="back-button">← Volver al Blog</a>
+        </article>
+
+        <!-- Related Posts -->
+        <section class="related-posts">
+            <h3>Otros artículos en el Blog</h3>
+            <a href="#" class="related-post-card">
+                <strong>Metodologías de Investigación</strong><br>
+                <span>Comparte tus aprendizajes sobre metodologías en BPM, análisis de datos y más...</span>
+            </a>
+            <a href="#" class="related-post-card">
+                <strong>Proyectos Destacados</strong><br>
+                <span>Historias de proyectos exitosos: desde problemas identificados hasta soluciones implementadas...</span>
+            </a>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p><strong>Semillero de Investigación Mamba</strong></p>
+            <p>Corporación Universitaria del Huila - CORHUILA</p>
+            <p>Programa de Ingeniería de Sistemas</p>
+            <p>Ubicación: Neiva, Huila - Colombia</p>
+            <div class="footer-links">
+                <a href="http://www.corhuila.edu.co" target="_blank">CORHUILA</a>
+            </div>
+            <p style="margin-top: 20px; font-size: 0.85em; opacity: 0.8;">&copy; 2026 Semillero Mamba. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Button -->
+    <a href="https://chat.whatsapp.com/LC9bMjYmFqN4LUfGLDOMX0" target="_blank" class="whatsapp-button" title="Únete al grupo de WhatsApp del Semillero Mamba">
+        <span style="font-size: 32px;">💬</span>
+    </a>
+</body>
+</html>

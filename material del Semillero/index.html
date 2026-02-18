@@ -45,6 +45,21 @@
             align-items: center;
             flex-wrap: wrap;
             gap: 20px;
+            position: relative;
+        }
+
+        .header-content::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            width: 400px;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: -1;
         }
 
         .logo-section {
@@ -72,11 +87,19 @@
             font-size: 1.8em;
             margin-bottom: 5px;
             text-align: center;
+            width: 100%;
         }
 
         .header-title p {
             font-size: 0.95em;
             opacity: 0.95;
+            text-align: center;
+            width: 100%;
+        }
+
+        .header-title {
+            flex: 1 1 100%;
+            order: -1;
             text-align: center;
         }
 
@@ -643,6 +666,11 @@
                 <p><strong>Coordinador</strong></p>
                 <p>📧 julian.quimbayo@corhuila.edu.co</p>
                 <p style="font-size: 0.85em; color: #999;">Ingeniería de Sistemas</p>
+                <p style="margin-top: 12px;">
+                    <a href="https://scholar.google.com/citations?user=h9e36C4AAAAJ&hl=es&oi=ao" target="_blank" style="color: var(--secondary-green); text-decoration: none; font-size: 0.9em; transition: opacity 0.3s;" onmouseover="this.style.opacity='0.7'" onmouseout="this.style.opacity='1'">
+                        📚 Google Scholar
+                    </a>
+                </p>
             </div>
             <div class="coordinator-card">
                 <div class="coordinator-icon">👨‍💼</div>
@@ -650,6 +678,11 @@
                 <p><strong>Coordinador</strong></p>
                 <p>📧 jmllanosm@corhuila.edu.co</p>
                 <p style="font-size: 0.85em; color: #999;">Ingeniería de Sistemas</p>
+                <p style="margin-top: 12px;">
+                    <a href="https://scholar.google.com/citations?user=IFy6VuAAAAAJ&hl=es&oi=ao" target="_blank" style="color: var(--secondary-green); text-decoration: none; font-size: 0.9em; transition: opacity 0.3s;" onmouseover="this.style.opacity='0.7'" onmouseout="this.style.opacity='1'">
+                        📚 Google Scholar
+                    </a>
+                </p>
             </div>
         </div>
     </section>

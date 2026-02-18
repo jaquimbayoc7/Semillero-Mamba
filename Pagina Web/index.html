@@ -41,12 +41,11 @@
             max-width: 100%;
             margin: 0 auto;
             padding: 20px 40px;
-            display: flex;
-            justify-content: space-between;
+            display: grid;
+            grid-template-columns: auto 1fr auto;
             align-items: center;
             gap: 20px;
             min-height: 100%;
-            flex-wrap: wrap;
         }
 
         .logo-section {
@@ -54,7 +53,6 @@
             align-items: center;
             gap: 15px;
             flex-shrink: 0;
-            order: 1;
         }
 
         .logo-item {
@@ -73,10 +71,8 @@
         }
 
         .header-title {
-            flex: 1;
             text-align: center;
-            order: 2;
-            min-width: 300px;
+            justify-self: center;
         }
 
         .header-title h1 {
@@ -95,7 +91,6 @@
             display: flex;
             gap: 20px;
             flex-shrink: 0;
-            order: 3;
             flex-wrap: wrap;
             justify-content: flex-end;
         }

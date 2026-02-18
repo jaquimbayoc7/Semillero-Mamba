@@ -424,7 +424,49 @@
             background: linear-gradient(135deg, var(--light-bg) 0%, white 100%);
             border: 2px solid var(--secondary-green);
         }
-    </style>
+
+        /* WhatsApp Floating Button */
+        .whatsapp-button {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #25d366 0%, #1fab89 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+            transition: transform 0.3s, box-shadow 0.3s;
+            z-index: 999;
+            text-decoration: none;
+        }
+
+        .whatsapp-button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 30px rgba(37, 211, 102, 0.6);
+        }
+
+        .whatsapp-button:active {
+            transform: scale(0.95);
+        }
+
+        .whatsapp-button svg {
+            width: 32px;
+            height: 32px;
+            fill: white;
+        }
+
+        @media (max-width: 768px) {
+            .whatsapp-button {
+                width: 55px;
+                height: 55px;
+                bottom: 20px;
+                right: 20px;
+            }
+        }
 </head>
 <body>
     <!-- Header -->
@@ -448,7 +490,7 @@
                 <a href="#inicio">Inicio</a>
                 <a href="#lineas">Líneas</a>
                 <a href="#coordinadores">Equipo</a>
-                <a href="#inscripcion">Inscribirse</a>
+                <a href="https://chat.whatsapp.com/LC9bMjYmFqN4LUfGLDOMX0" target="_blank">WhatsApp</a>
             </nav>
         </div>
     </header>
@@ -547,87 +589,8 @@
                 <div class="coordinator-icon">👨‍💼</div>
                 <h4>Ing. José Miguel Llanos Mosquera</h4>
                 <p><strong>Coordinador</strong></p>
-                <p>📧 jose.llanos@corhuila.edu.co</p>
+                <p>📧 jmllanosm@corhuila.edu.co</p>
                 <p style="font-size: 0.85em; color: #999;">Ingeniería de Sistemas</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Formulario de Inscripción -->
-    <section class="form-section" id="inscripcion">
-        <div class="container">
-            <h3 class="section-title">Inscribirse al Semillero Mamba</h3>
-            <div class="form-container">
-                <form action="https://formspree.io/f/xyzpwqvr" method="POST">
-                    <div class="form-group">
-                        <label for="nombre">Nombre Completo *</label>
-                        <input type="text" id="nombre" name="nombre" required placeholder="Tu nombre completo">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="email">Correo Electrónico *</label>
-                        <input type="email" id="email" name="email" required placeholder="tu.email@ejemplo.com">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="telefono">Teléfono</label>
-                        <input type="tel" id="telefono" name="telefono" placeholder="+57 300 0000000">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="programa">Programa Académico *</label>
-                        <select id="programa" name="programa" required>
-                            <option value="">Selecciona tu programa</option>
-                            <option value="Ingeniería de Sistemas">Ingeniería de Sistemas</option>
-                            <option value="Ingeniería en Informática">Ingeniería en Informática</option>
-                            <option value="Otros">Otros</option>
-                        </select>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="semestre">Semestre *</label>
-                        <select id="semestre" name="semestre" required>
-                            <option value="">Selecciona tu semestre</option>
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                            <option value="5">5</option>
-                            <option value="6">6</option>
-                            <option value="7">7</option>
-                            <option value="8">8</option>
-                            <option value="9">9</option>
-                            <option value="10">10</option>
-                        </select>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="linea">Línea de Investigación de Interés *</label>
-                        <select id="linea" name="linea" required>
-                            <option value="">Selecciona una línea</option>
-                            <option value="Desarrollo de Software">Desarrollo de Software</option>
-                            <option value="Calidad de Software">Calidad de Software</option>
-                            <option value="Análisis de Datos">Análisis de Datos</option>
-                            <option value="Arquitectura de Software">Arquitectura de Software</option>
-                        </select>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="experiencia">Experiencia / Habilidades</label>
-                        <textarea id="experiencia" name="experiencia" placeholder="Cuéntanos sobre tu experiencia y habilidades en programación, análisis de datos u otros temas relevantes..."></textarea>
-                    </div>
-
-                    <div class="form-group checkbox-group">
-                        <label>
-                            <input type="checkbox" name="terminos" required>
-                            Acepto los términos de inscripción
-                        </label>
-                    </div>
-
-                    <button type="submit" class="btn-submit">Enviar Inscripción</button>
-                    <input type="hidden" name="_subject" value="Nueva Inscripción - Semillero Mamba CORHUILA">
-                    <input type="hidden" name="_redirect" value="gracias.html">
-                </form>
             </div>
         </div>
     </section>
@@ -646,5 +609,12 @@
             <p style="margin-top: 20px; font-size: 0.85em; opacity: 0.8;">&copy; 2024-2025 Semillero Mamba. Todos los derechos reservados.</p>
         </div>
     </footer>
+
+    <!-- WhatsApp Floating Button -->
+    <a href="https://chat.whatsapp.com/LC9bMjYmFqN4LUfGLDOMX0" target="_blank" class="whatsapp-button" title="Únete al grupo de WhatsApp del Semillero Mamba">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.67-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.076 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421-7.403h-.004a9.87 9.87 0 00-4.902 1.23l-.333.198-3.46-.86.876 3.39-.215.338a9.9 9.9 0 001.516 5.394c.375.552.823 1.063 1.342 1.499.52.436 1.074.782 1.664 1.04 2.89 1.159 6.016.666 8.607-1.387 1.822-1.4 3.029-3.508 3.544-5.68.51-2.17.39-4.453-.333-6.477-1.813-5.087-7.614-8.088-12.895-6.4zm0 0"/>
+        </svg>
+    </a>
 </body>
 </html>

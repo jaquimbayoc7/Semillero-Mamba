@@ -42,7 +42,8 @@
             margin: 0 auto;
             padding: 20px 40px;
             display: grid;
-            grid-template-columns: auto 1fr auto;
+            grid-template-columns: 1fr auto 1fr;
+            grid-template-areas: "logo title nav";
             align-items: center;
             gap: 20px;
             min-height: 100%;
@@ -51,8 +52,9 @@
         .logo-section {
             display: flex;
             align-items: center;
+            justify-content: flex-start;
             gap: 15px;
-            flex-shrink: 0;
+            grid-area: logo;
         }
 
         .logo-item {
@@ -72,6 +74,7 @@
 
         .header-title {
             text-align: center;
+            grid-area: title;
             justify-self: center;
         }
 
@@ -93,6 +96,7 @@
             flex-shrink: 0;
             flex-wrap: wrap;
             justify-content: flex-end;
+            grid-area: nav;
         }
 
         nav a {

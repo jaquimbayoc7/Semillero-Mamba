@@ -202,6 +202,82 @@
             font-style: italic;
         }
 
+        /* Modal para ampliar imágenes */
+        .image-modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            animation: fadeIn 0.3s;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .modal-content {
+            margin: auto;
+            display: block;
+            max-width: 90vw;
+            max-height: 90vh;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            position: relative;
+            animation: slideIn 0.3s;
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translate(-50%, -60%);
+                opacity: 0;
+            }
+            to {
+                transform: translate(-50%, -50%);
+                opacity: 1;
+            }
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 40px;
+            color: white;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: opacity 0.3s;
+        }
+
+        .modal-close:hover {
+            opacity: 0.7;
+        }
+
+        .zoom-hint {
+            display: inline-block;
+            margin-left: 8px;
+            padding: 2px 8px;
+            background: var(--secondary-green);
+            color: white;
+            border-radius: 15px;
+            font-size: 0.75em;
+            font-weight: 600;
+        }
+
+        .blog-image {
+            cursor: zoom-in;
+        }
+
+        .blog-image:hover {
+            opacity: 0.95;
+            box-shadow: 0 6px 20px rgba(42, 157, 126, 0.3);
+        }
+
         .blog-content ul, .blog-content ol {
             margin: 20px 0 20px 30px;
             line-height: 1.8;
@@ -465,8 +541,11 @@
                 Es un proceso vivo donde:
             </p>
 
-            <img src="research-process-diagram.png" alt="Proceso de Investigación Paso a Paso" class="blog-image">
-            <div class="image-caption">Figura 1: Proceso de investigación del Semillero Mamba - Pasos secuenciales con iteración continua</div>
+            <img src="research-process-diagram.png" alt="Proceso de Investigación Paso a Paso" class="blog-image" onclick="openImageModal(this)">
+            <div class="image-caption">
+                📊 Figura 1: Proceso de investigación del Semillero Mamba
+                <span class="zoom-hint">🔍 Haz clic para ampliar</span>
+            </div>
 
             <ul>
                 <li><strong>Identificas problemas reales:</strong> En desarrollo de software, calidad de software, análisis de datos y arquitectura</li>
@@ -521,8 +600,11 @@
                 Lo que hace especial al Semillero Mamba es nuestra metodología práctica:
             </p>
 
-            <img src="research-cycle.png" alt="Ciclo de Investigación Científica" class="blog-image">
-            <div class="image-caption">Figura 2: Ciclo de investigación científica - Proceso iterativo basado en principios académicos rigurosos</div>
+            <img src="research-cycle.png" alt="Ciclo de Investigación Científica" class="blog-image" onclick="openImageModal(this)">
+            <div class="image-caption">
+                🔄 Figura 2: Ciclo de investigación científica
+                <span class="zoom-hint">🔍 Haz clic para ampliar</span>
+            </div>
 
             <ol>
                 <li><strong>Mentoría personalizada:</strong> Trabajamos con profesores con experiencia en investigación y en la industria</li>
@@ -620,5 +702,38 @@
     <a href="https://chat.whatsapp.com/LC9bMjYmFqN4LUfGLDOMX0" target="_blank" class="whatsapp-button" title="Únete al grupo de WhatsApp del Semillero Mamba">
         <span style="font-size: 32px;">💬</span>
     </a>
+
+    <!-- Modal para imágenes ampliadas -->
+    <div id="imageModal" class="image-modal" onclick="closeImageModal(event)">
+        <span class="modal-close" onclick="closeImageModal()">&times;</span>
+        <img class="modal-content" id="modalImage">
+    </div>
+
+    <script>
+        function openImageModal(img) {
+            const modal = document.getElementById('imageModal');
+            const modalImg = document.getElementById('modalImage');
+            modalImg.src = img.src;
+            modal.style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeImageModal(event) {
+            const modal = document.getElementById('imageModal');
+            // Solo cerrar si se hace clic en el fondo, no en la imagen
+            if (event && event.target !== modal) {
+                return;
+            }
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        // Cerrar modal con tecla ESC
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeImageModal();
+            }
+        });
+    </script>
 </body>
 </html>

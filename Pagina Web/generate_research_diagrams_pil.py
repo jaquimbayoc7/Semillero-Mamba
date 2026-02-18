@@ -195,8 +195,11 @@ for i, title in enumerate(cycle_steps):
     draw2.text((x, num_y), str(i+1),
                font=step_title_font, fill='white', anchor="mm")
     
-    # Etiqueta (en el circulo principal, bien centrada)
-    draw2.text((x, y), title,
+    # Etiqueta FUERA del circulo, posicionada según el ángulo
+    text_distance = circle_r + 60
+    text_x = x + text_distance * math.cos(rads)
+    text_y = y + text_distance * math.sin(rads)
+    draw2.text((text_x, text_y), title,
                font=step_title_font, fill=color, anchor="mm")
     
     # Flecha al siguiente paso

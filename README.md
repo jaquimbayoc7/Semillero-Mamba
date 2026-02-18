@@ -2,7 +2,7 @@
 
 ## Bienvenido al Semillero Mamba
 
-Este repositorio contiene el material de apoyo y recursos para el Semillero Mamba - Programa de Ingeniería de Sistemas, Corporación Universitaria Minuto de Dios - CORHUILA.
+Este repositorio contiene el material de apoyo y recursos para el Semillero Mamba - Programa de Ingeniería de Sistemas, Corporación Universitaria del Huila - CORHUILA.
 
 ## Contenido
 
@@ -14,4 +14,4 @@ El Semillero Mamba es un espacio de formación especializado en Ingeniería de S
 
 ## Sobre CORHUILA
 
-Corporación Universitaria Minuto de Dios - CORHUILA es una institución de educación superior comprometida con la formación integral de profesionales en diversas áreas del conocimiento.
+Corporación Universitaria del Huila - CORHUILA es una institución de educación superior comprometida con la formación integral de profesionales en diversas áreas del conocimiento.

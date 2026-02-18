@@ -417,25 +417,79 @@
 
             <h2>Fases de Construcción del Thesaurus</h2>
 
-            <h3>Fase 1: Identificación de Conceptos Claves</h3>
+            <h3>Fase 0: Recopilación Estructurada de Artículos (Foundación del Thesaurus)</h3>
             <p>
-                El primer paso es recopilar todos los términos relevantes en nuestro trabajo de investigación. Nuestro equipo ha identificado categorías principales:
+                Antes de identificar conceptos, es fundamental recopilar y organizar sistemáticamente la literatura académica relacionada con nuestro tema de investigación. Para esto, creamos una estructura Excel estandarizada que captura información crítica de cada artículo:
             </p>
             <div class="highlight-box">
                 <p>
-                    Categorías identificadas: Metodologías, Procesos, Herramientas, Actores, Resultados, Impacto Social
+                    La recopilación estructurada de artículos es el punto de partida de todo thesaurus. Sin una base sólida de literature, no podemos identificar conceptos válidos ni relevancias.
                 </p>
             </div>
             <ul>
-                <li><strong>Metodologías:</strong> BPM, Análisis de Datos, Desarrollo Ágil, Arquitectura de Software, Investigación Cualitativa, Investigación Cuantitativa</li>
-                <li><strong>Procesos:</strong> Identificación de Problemas, Investigación Bibliográfica, Diseño de Soluciones, Implementación, Validación</li>
-                <li><strong>Herramientas:</strong> Python, SQL, Git, Docker, Jupyter Notebooks, Figma</li>
-                <li><strong>Actores:</strong> Investigador, Coordinador, Estudiante, Comunidad Beneficiada</li>
-                <li><strong>Resultados:</strong> Publicación, Presentación, Prototipo, Informe Científico</li>
-                <li><strong>Impacto:</strong> Transferencia Tecnológica, Educación, Mejora de Procesos</li>
+                <li><strong>N°:</strong> Identificador único del artículo</li>
+                <li><strong>Nombre Artículo:</strong> Título completo del trabajo científico</li>
+                <li><strong>Link:</strong> URL permanente (DOI o URL directa a la publicación)</li>
+                <li><strong>Abstract/Resumen:</strong> Resumen en idioma original (generalmente inglés)</li>
+                <li><strong>Abstract en Español:</strong> Traducción y adaptación del resumen al español</li>
+                <li><strong>Base de Datos:</strong> Fuente de donde se obtuvo (Springer, IEEE, Scopus, PubMed, etc.)</li>
+                <li><strong>Conceptos:</strong> Términos clave y conceptos principales extraídos manualmente del artículo</li>
+                <li><strong>Año:</strong> Año de publicación para análisis tendencial</li>
+                <li><strong>Palabras Clave:</strong> Palabras clave autores + palabras clave identificadas por el revisor</li>
             </ul>
 
-            <h3>Fase 2: Definición de Relaciones</h3>
+            <h3>Ejemplo Práctico: Artículo sobre IA en Educación</h3>
+            <p>
+                Para ilustrar cómo se completa esta estructura, tomemos el artículo "Artificial intelligence in education research during 2013–2023":
+            </p>
+            <div class="code-block">
+N°: 1
+Nombre: Artificial intelligence in education research 
+during 2013–2023: A review based on bibliometric analysis
+
+Link: https://link.springer.com/article/10.1007/s10639-024-12491-8
+
+Base de Datos: Springer
+
+Año: 2024
+
+Conceptos Identificados:
+- Inteligencia Artificial en Educación (AIED)
+- Aprendizaje Automático (Machine Learning)
+- Robots Educativos
+- Sistemas de Recomendación
+- Calificación Automatizada
+- Análisis del Aprendizaje
+- Tutoría Inteligente
+- Minería de Datos
+- Visión Artificial
+- Reconocimiento de Voz
+
+Palabras Clave:
+- educación superior
+- tecnologías de aprendizaje automático
+- implementaciones educativas
+- tendencias emergentes
+- STEM
+- análisis bibliométrico
+            </div>
+
+            <h3>Fase 1: Identificación de Conceptos Claves (Mejorada)</h3>
+            <p>
+                Con la recopilación estructurada en Excel, extraemos conceptos de múltiples fuentes simultáneamente. El proceso incluye:
+            </p>
+            <ul>
+                <li><strong>Lectura de Abstracts:</strong> El abstract en español facilita identificar conceptos sin necesidad de leer el artículo completo</li>
+                <li><strong>Extracción de Términos:</strong> Los "Conceptos" y "Palabras Clave" del Excel son candidatos directos para nuestro thesaurus</li>
+                <li><strong>Normalización:</strong> Convertimos variaciones (ej: "Machine Learning" = "Aprendizaje Automático") a formas estándar</li>
+                <li><strong>Agrupación Temática:</strong> Organizamos conceptos por categorías: Metodologías, Tecnologías, Procesos, Resultados</li>
+            </ul>
+
+            <p>
+                De nuestro ejemplo, identificamos que "Aprendizaje Automático" aparece en múltiples artículos como concepto central, así que se convierte en un término preferido en nuestro thesaurus.
+            </p>
+
+            <h3>Fase 2: Mapeo de Relaciones desde la Literatura</h3>
             <p>
                 Una vez identificados los conceptos, establecemos relaciones entre ellos. En un thesaurus, las relaciones principales son:
             </p>
@@ -460,31 +514,96 @@
                 </li>
             </ul>
 
-            <h3>Fase 3: Creación de Descripciones y Alcance</h3>
+            <h3>Fase 2: Mapeo de Relaciones desde la Literatura</h3>
             <p>
-                Para cada concepto principal, creamos una nota de alcance que explica exactamente qué significa en nuestro contexto:
+                Los abstracts y palabras clave en nuestra tabla Excel revelan conexiones entre conceptos. Analizamos:
+            </p>
+            <ul>
+                <li><strong>Co-ocurrencia de Términos:</strong> Si "Aprendizaje Automático" aparece junto con "Robots Educativos" en múltiples artículos, establecemos una relación asociativa (RT)</li>
+                <li><strong>Jerquía Natural:</strong> El abstract de nuestro ejemplo menciona que "Aprendizaje Automático" es un componente técnico de "IA en Educación", lo que sugiere una relación jerárquica</li>
+                <li><strong>Contexto Disciplinar:</strong> Los artículos de la base de datos Springer en educación vs. ingeniería pueden revelar contextos de uso diferentes</li>
+            </ul>
+
+            <p>
+                En nuestro ejemplo:
             </p>
             <div class="code-block">
-Término Preferido: INVESTIGACIÓN CIENTÍFICA
-Nota de Alcance: Proceso riguroso y sistemático de 
-indagación que sigue métodos establecidos para 
-responder preguntas, resolver problemas o crear 
-conocimiento nuevo. En el Semillero Mamba, incluye 
-investigación cualitativa, cuantitativa y mixta.
-Términos Relacionados: Metodología, Rigor Científico
-Términos Jerárquicos: Investigación Cualitativa, 
-Investigación Cuantitativa
+INTELIGENCIA ARTIFICIAL EN EDUCACIÓN (BT - Concepto más amplio)
+├── Aprendizaje Automático (NT - Concepto más específico)
+├── Visión Artificial (NT)
+└── Reconocimiento de Voz (NT)
+
+Aprendizaje Automático (RT - Términos Asociados)
+├── Árboles de Decisión
+├── Deep Learning
+├── Redes Neuronales
+└── Minería de Datos
+            </div>
+
+            <h3>Fase 3: Definición de Descripciones y Alcance (Enriquecida)</h3>
+            <h3>Fase 3: Definición de Descripciones y Alcance (Enriquecida)</h3>
+            <p>
+                Para cada concepto principal, creamos una nota de alcance que explica exactamente qué significa en nuestro contexto. Los abstracts en español de nuestra tabla Excel son insumos cruciales para escribir estas descripciones con precisión:
+            </p>
+            <div class="code-block">
+Término Preferido: APRENDIZAJE AUTOMÁTICO
+Término Alterno: Machine Learning, Algoritmos de Aprendizaje
+
+Nota de Alcance (basado en análisis de abstracts):
+Conjunto de técnicas computacionales que permiten a los 
+sistemas aprender de datos sin ser explícitamente programados. 
+En educación, se utiliza para crear sistemas adaptativos que 
+mejoran la experiencia de aprendizaje. Incluye técnicas como 
+árboles de decisión, deep learning y redes neuronales.
+
+Contexto de Uso (del análisis bibliométrico):
+- Educación superior: desarrollo de sistemas de recomendación
+- Educación con STEM: automatización de evaluaciones
+- Educación general: análisis de patrones de aprendizaje
+
+Término Jerárquico Más Amplio (BT): 
+Inteligencia Artificial en Educación
+
+Términos Más Específicos (NT):
+- Árboles de Decisión
+- Deep Learning
+- Redes Neuronales
+
+Términos Relacionados (RT):
+- Minería de Datos
+- Análisis del Aprendizaje
+- Visión Artificial
+
+Referencias Bibliográficas:
+- Springer 2024: "Artificial intelligence in education research..."
             </div>
 
             <h3>Fase 4: Validación y Refinamiento</h3>
             <p>
-                Presentamos el thesaurus preliminar a coordinadores y estudiantes líderes para obtener retroalimentación. Aspectos a validar:
+                Presentamos el thesaurus preliminar a coordinadores y estudiantes líderes para obtener retroalimentación. Aspectos a validar usando la evidencia de la tabla Excel:
             </p>
             <ul>
-                <li>¿Los términos reflejan realmente nuestro trabajo?</li>
-                <li>¿Faltan conceptos importantes?</li>
-                <li>¿Las relaciones jerárquicas son correctas?</li>
-                <li>¿Las definiciones son claras y útiles?</li>
+                <li>¿Los términos reflejan realmente los conceptos en la literature recopilada?</li>
+                <li>¿Las relaciones jerárquicas coinciden con cómo los autores presentan estos términos en los abstracts?</li>
+                <li>¿Hay conceptos nuevos en los artículos más recientes que deberían añadirse?</li>
+                <li>¿Las definiciones son claras y concordantes con los abstracts en español?</li>
+                <li>¿Hemos capturado todas las variaciones terminológicas mencionadas en las palabras clave?</li>
+            </ul>
+
+            <p>
+                Ejemplo de iteración: Si encontramos que "Robótica Educativa" y "Robots Educativos" aparecen como palabras clave en múltiples artículos, decidimos cual es la forma preferida y qué es alterno en nuestro thesaurus.
+            </p>
+
+            <h2>Cómo Usar la Tabla Excel en el Día a Día</h2>
+            <p>
+                Una vez construido el thesaurus, la tabla Excel continúa siendo valiosa:
+            </p>
+            <ul>
+                <li><strong>Indexación Consistente:</strong> Cuando un nuevo estudiante agrega un artículo, usa los conceptos del thesaurus para llenar la columna "Conceptos"</li>
+                <li><strong>Mejora Iterativa:</strong> Cada nuevo artículo puede sugerir refinamientos al thesaurus</li>
+                <li><strong>Trazabilidad:</strong> La columna "Link" permite verificar directamente en la literatura cualquier definición o relación</li>
+                <li><strong>Análisis Tendencial:</strong> La columna "Año" permite ver si ciertos conceptos están en alza o declive en la literature</li>
+                <li><strong>Análisis por Base de Datos:</strong> Comprender si conceptos específicos prevalecen en ciertas disciplinas (Springer vs IEEE vs PubMed)</li>
             </ul>
 
             <h2>Beneficios Observados</h2>
@@ -521,18 +640,54 @@ Investigación Cuantitativa
                 Estamos en proceso de:
             </p>
             <ol>
-                <li>Completar el thesaurus inicial con 150+ términos definidos</li>
-                <li>Implementarlo en nuestro repositorio institucional</li>
-                <li>Capacitar a todos los estudiantes en su uso</li>
-                <li>Revisar y actualizar anualmente según emergen nuevos conceptos</li>
+                <li>Establecer la tabla Excel estándar como herramienta base para recopilación de artículos</li>
+                <li>Alimentar el thesaurus inicial desde los 150+ artículos ya recopilados en la tabla</li>
+                <li>Crear un diccionario de conceptos con 200+ términos definidos, cada uno con referencias a artículos (links)</li>
+                <li>Implementar el thesaurus en herramientas colaborativas (Google Sheets + documentación en Wiki)</li>
+                <li>Capacitar a todos los estudiantes en: cómo usar la tabla Excel, cómo aplicar el thesaurus al indexar artículos, cómo proponer nuevos términos</li>
+                <li>Revisar y actualizar trimestralmente el thesaurus según emergen nuevos conceptos en la literature</li>
+                <li>Publicar el thesaurus como recurso abierto de la institución (Creative Commons)</li>
             </ol>
+
+            <h2>El Flujo de Trabajo Integrado</h2>
+            <p>
+                El proceso completo funciona como un ciclo virtuoso:
+            </p>
+            <div class="code-block">
+1. DESCUBRIMIENTO
+   Estudiante encuentra un artículo relevante sobre su tema
+
+2. DOCUMENTACIÓN
+   → Completa la tabla Excel con todos los campos
+   → Especialmente: Abstract en Español, Conceptos, Palabras Clave
+
+3. INDEXACIÓN
+   → Usa el Thesaurus para normalizar los Conceptos
+   → Selecciona términos preferidos del thesaurus
+   → Agrega nuevas palabras clave si introduce conceptos nuevos
+
+4. RETROALIMENTACIÓN
+   → El equipo revisa si nuevos términos deben agregarse al thesaurus
+   → Se enriquece el thesaurus de forma iterativa
+
+5. SÍNTESIS
+   → Análisis anual de tendencias por año, base de datos, conceptos
+   → Visualización de qué áreas están ganando relevancia
+   → Base para planificación de nuevas líneas de investigación
+            </div>
 
             <h2>Conclusión</h2>
             <p>
-                Construir un thesaurus sobre investigación no es solo una tarea administrativativa, es una inversión en la calidad de nuestro trabajo académico. Al normalizar nuestro vocabulario, mejoramos la comunicación, facilitamos la transferencia de conocimiento entre generaciones y aseguramos que el Semillero Mamba continúe evolucionando como un ecosistema investigativo sólido y profesional.
+                Construir un thesaurus sobre investigación no es solo una tarea administrativa, es una inversión estratégica en la calidad y profesionalismo de nuestro trabajo académico. Lo valioso de este proceso es que comienza donde todos los investigadores ya están: recopilando artículos en una tabla Excel bien estructurada.
             </p>
             <p>
-                ¿Estás listo para ser parte de esta construcción? Tus ideas y términos favoritos son valiosos para enriquecer nuestro thesaurus.
+                La tabla Excel es tanto un coleccionador de conocimiento como un generador de insights. Con la estructura correcta (N°, Nombre, Link, Abstracts, Base de Datos, Conceptos, Año, Palabras Clave), cada artículo ingresado alimenta automáticamente la construcción del thesaurus. Los conceptos que hoy catalogas, mañana se convierten en términos controlados que toda la comunidad usa.
+            </p>
+            <p>
+                Al normalizar nuestro vocabulario y mantener la trazabilidad de cada concepto a su origen en la literature, mejoramos la comunicación, facilitamos la transferencia de conocimiento entre generaciones, y aseguramos que el Semillero Mamba evolucione como un ecosistema investigativo sólido, profesional y duradero.
+            </p>
+            <p style="margin-top: 20px; font-weight: 600; color: var(--secondary-green);">
+                ¿Estás listo para ser parte de esta construcción? Cada artículo que documentes, cada concepto que identifiques, enriquece nuestro thesaurus colectivo. Tu contribución importa. 🚀
             </p>
 
             <div style="margin-top: 40px; padding-top: 20px; border-top: 2px solid #ddd;">

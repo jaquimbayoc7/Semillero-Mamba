@@ -14,11 +14,11 @@ light_gray = '#f5f5f5'
 
 # Intentar cargar fuentes
 try:
-    title_font = ImageFont.truetype("arial.ttf", 60)
-    subtitle_font = ImageFont.truetype("arial.ttf", 36)
-    step_title_font = ImageFont.truetype("arial.ttf", 32)
-    step_desc_font = ImageFont.truetype("arial.ttf", 22)
-    info_font = ImageFont.truetype("arial.ttf", 26)
+    title_font = ImageFont.truetype("arial.ttf", 80)
+    subtitle_font = ImageFont.truetype("arial.ttf", 48)
+    step_title_font = ImageFont.truetype("arial.ttf", 40)
+    step_desc_font = ImageFont.truetype("arial.ttf", 28)
+    info_font = ImageFont.truetype("arial.ttf", 32)
 except:
     from PIL import ImageFont
     title_font = ImageFont.load_default()
@@ -149,24 +149,24 @@ img2 = Image.new('RGB', (1800, 1600), color='white')
 draw2 = ImageDraw.Draw(img2, 'RGBA')
 
 # Titulo
-draw2.text((900, 100), "Ciclo de Investigacion Cientifica",
+draw2.text((900, 120), "Ciclo de Investigacion Cientifica",
            font=title_font, fill=primary_green, anchor="mm")
-draw2.text((900, 180), "Proceso Riguroso y Sistematico",
+draw2.text((900, 220), "Proceso Riguroso y Sistematico",
            font=subtitle_font, fill=secondary_green, anchor="mm")
 
 # Datos del ciclo
 cycle_steps = [
-    "Pregunta de Investigacion",
-    "Revision de Literatura",
-    "Hipotesis y Diseño",
-    "Ejecucion del Proyecto",
-    "Analisis de Resultados",
-    "Conclusiones y Publicacion",
+    "Pregunta de\nInvestigacion",
+    "Revision de\nLiteratura",
+    "Hipotesis y\nDiseño",
+    "Ejecucion del\nProyecto",
+    "Analisis de\nResultados",
+    "Conclusiones y\nPublicacion",
 ]
 
 # Posiciones en circulo
-center_x, center_y = 900, 800
-radius = 350
+center_x, center_y = 900, 850
+radius = 380
 
 # Colores alternos para pasos
 colors = [primary_green, secondary_green, accent_red] * 2
@@ -180,25 +180,23 @@ for i, title in enumerate(cycle_steps):
     
     color = colors[i]
     
-    # Circulo para cada paso
-    circle_r = 70
+    # Circulo principal para cada paso
+    circle_r = 80
     draw2.ellipse([(x - circle_r, y - circle_r),
                    (x + circle_r, y + circle_r)],
-                  outline=color, width=4, fill=(255, 255, 255))
+                  outline=color, width=5, fill=(255, 255, 255))
     
-    # Numero
-    num_circle_r = 28
-    draw2.ellipse([(x - num_circle_r, y - num_circle_r - 55),
-                   (x + num_circle_r, y - num_circle_r - 55 + 2*num_circle_r)],
+    # Numero en circulo rojo (arriba del circulo principal)
+    num_circle_r = 32
+    num_y = y - circle_r - 50
+    draw2.ellipse([(x - num_circle_r, num_y - num_circle_r),
+                   (x + num_circle_r, num_y + num_circle_r)],
                   fill=accent_red)
-    draw2.text((x, y - 55), str(i+1),
+    draw2.text((x, num_y), str(i+1),
                font=step_title_font, fill='white', anchor="mm")
     
-    # Etiqueta (posicionada fuera del circulo)
-    label_distance = circle_r + 80
-    label_x = x + label_distance * math.cos(rads)
-    label_y = y + label_distance * math.sin(rads)
-    draw2.text((label_x, label_y), title,
+    # Etiqueta (en el circulo principal, bien centrada)
+    draw2.text((x, y), title,
                font=step_title_font, fill=color, anchor="mm")
     
     # Flecha al siguiente paso
@@ -210,22 +208,22 @@ for i, title in enumerate(cycle_steps):
     next_y = center_y + radius * math.sin(next_rads)
     
     # Ajustar para que la flecha salga del circulo
-    from_x = x + (circle_r + 10) * math.cos(rads)
-    from_y = y + (circle_r + 10) * math.sin(rads)
-    to_x = next_x - (circle_r + 10) * math.cos(next_rads)
-    to_y = next_y - (circle_r + 10) * math.sin(next_rads)
+    from_x = x + (circle_r + 15) * math.cos(rads)
+    from_y = y + (circle_r + 15) * math.sin(rads)
+    to_x = next_x - (circle_r + 15) * math.cos(next_rads)
+    to_y = next_y - (circle_r + 15) * math.sin(next_rads)
     
     draw2.line([(from_x, from_y), (to_x, to_y)],
-               fill=secondary_green, width=4)
+               fill=secondary_green, width=5)
 
 # Centro circulo
-center_r = 90
+center_r = 110
 draw2.ellipse([(center_x - center_r, center_y - center_r),
                (center_x + center_r, center_y + center_r)],
-              outline=primary_green, width=3, fill=(245, 250, 248))
-draw2.text((center_x, center_y - 20), "Investigacion",
+              outline=primary_green, width=4, fill=(245, 250, 248))
+draw2.text((center_x, center_y - 30), "Investigacion",
            font=step_title_font, fill=primary_green, anchor="mm")
-draw2.text((center_x, center_y + 20), "Rigurosa",
+draw2.text((center_x, center_y + 30), "Rigurosa",
            font=step_title_font, fill=primary_green, anchor="mm")
 
 # Info box

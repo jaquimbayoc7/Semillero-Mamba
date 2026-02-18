@@ -166,7 +166,7 @@ cycle_steps = [
 
 # Posiciones en circulo
 center_x, center_y = 900, 850
-radius = 380
+radius = 420
 
 # Colores alternos para pasos
 colors = [primary_green, secondary_green, accent_red] * 2
@@ -180,8 +180,8 @@ for i, title in enumerate(cycle_steps):
     
     color = colors[i]
     
-    # Circulo principal para cada paso
-    circle_r = 80
+    # Circulo principal para cada paso (ampliado)
+    circle_r = 100
     draw2.ellipse([(x - circle_r, y - circle_r),
                    (x + circle_r, y + circle_r)],
                   outline=color, width=5, fill=(255, 255, 255))
@@ -216,8 +216,8 @@ for i, title in enumerate(cycle_steps):
     draw2.line([(from_x, from_y), (to_x, to_y)],
                fill=secondary_green, width=5)
 
-# Centro circulo
-center_r = 110
+# Centro circulo (ampliado)
+center_r = 140
 draw2.ellipse([(center_x - center_r, center_y - center_r),
                (center_x + center_r, center_y + center_r)],
               outline=primary_green, width=4, fill=(245, 250, 248))

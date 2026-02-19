@@ -597,6 +597,61 @@
             line-height: 1.6;
         }
 
+        /* Videos Section */
+        .videos-section {
+            padding: 80px 20px;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e8f5f3 100%);
+        }
+
+        .videos-container {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .video-card {
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .video-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(26, 124, 94, 0.2);
+        }
+
+        .video-card h4 {
+            color: var(--primary-green);
+            font-size: 1.8em;
+            margin-bottom: 15px;
+        }
+
+        .video-card p {
+            color: #666;
+            font-size: 1em;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .video-button {
+            background: linear-gradient(135deg, var(--primary-green) 0%, var(--secondary-green) 100%);
+            color: white;
+            padding: 15px 40px;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            display: inline-block;
+            transition: transform 0.3s, box-shadow 0.3s;
+            font-size: 1.05em;
+        }
+
+        .video-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(26, 124, 94, 0.3);
+        }
+
         /* Blog Section */
         .blog-section {
             background: var(--light-bg);
@@ -701,6 +756,7 @@
                 <a href="#lineas">Líneas</a>
                 <a href="#coordinadores">Equipo</a>
                 <a href="#eventos">Eventos</a>
+                <a href="#videos">Videos</a>
                 <a href="#blog">Blog</a>
                 <a href="https://chat.whatsapp.com/LC9bMjYmFqN4LUfGLDOMX0" target="_blank">WhatsApp</a>
             </nav>
@@ -830,6 +886,48 @@
                         🔗 Unirse a la Reunión por Teams
                     </a>
                 </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Videos de Sesión -->
+    <section class="videos-section" id="videos">
+        <div class="container">
+            <h3 class="section-title">Videos de Sesión</h3>
+            <div class="videos-container">
+                <div class="video-card">
+                    <h4>🎥 Accede a Nuestros Videos</h4>
+                    <p>
+                        En esta carpeta encontrarás todos los videos de las sesiones del Semillero Mamba. Aquí puedes ver las grabaciones de nuestras reuniones, talleres, presentaciones de proyectos y contenido académico complementario para tu aprendizaje.
+                    </p>
+                    <p style="color: #999; font-size: 0.9em;">
+                        📄 Organizado por fecha y tema - 🔐 Acceso exclusivo para miembros del semillero
+                    </p>
+                    <a href="https://drive.google.com/drive/folders/1CN9cSj3l7JJsHkPJWlEYcuXoYVb3mZcG?usp=sharing" target="_blank" class="video-button">
+                        🚀 Ir a Google Drive
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Videos de Sesión -->
+    <section class="videos-section" id="videos">
+        <div class="container">
+            <h3 class="section-title">Videos de Sesión</h3>
+            <div class="videos-container">
+                <div class="video-card">
+                    <h4>🎥 Accede a Nuestros Videos</h4>
+                    <p>
+                        En esta carpeta encontrarás todos los videos de las sesiones del Semillero Mamba. Aquí puedes ver las grabaciones de nuestras reuniones, talleres, presentaciones de proyectos y contenido académico complementario para tu aprendizaje.
+                    </p>
+                    <p style="color: #999; font-size: 0.9em;">
+                        📄 Organizado por fecha y tema - 🔐 Acceso exclusivo para miembros del semillero
+                    </p>
+                    <a href="https://drive.google.com/drive/folders/1CN9cSj3l7JJsHkPJWlEYcuXoYVb3mZcG?usp=sharing" target="_blank" class="video-button">
+                        🚀 Ir a Google Drive
+                    </a>
+                </div>
             </div>
         </div>
     </section>
